@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-      <a class="header-logo">LIST</a>
+      <a class="header-logo" href="/">LIST</a>
     </header>
     <div class="container">
       <div class="container-header">
@@ -19,24 +19,16 @@
           <span class="id-column">ID</span>
           <span>Item</span>
         </div>
-        <% const item = {id:4, name: 'Tomat'}%>
+        
         <ul class="table-body">
-          <li>
-            <span class="id-column">1</span>
-            <span class="name-column">kentang</span>
-          </li>
-          <li>
-            <span class="id-column">2</span>
-            <span class="name-column">wortel</span>
-          </li>
-          <li>
-            <span class="id-column">3</span>
-            <span class="name-column">bawang</span>
-          </li>
-          <li>
-            <span class="id-column"><%= item.id %></span>
-            <span class="name-column"><%= item.name %></span>
-          </li>
+
+          <% items.forEach(item => { %>
+            <li>
+              <span class="id-column"> <%= item.id%></span>
+              <span class="name-column"><%= item.name%></span>
+            </li>
+         <% }) %>
+         
         </ul>
       </div>
     </div>
