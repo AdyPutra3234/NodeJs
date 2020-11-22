@@ -35,6 +35,10 @@ app.get('/index', (req, res) => {
     });
 });
 
+app.get('/new', (req , res) => {
+    res.render('new.ejs');
+})
+
 app.listen(3234 , () => {
     console.log('Server started');
 });
