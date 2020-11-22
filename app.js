@@ -42,11 +42,9 @@ app.get('/new', (req , res) => {
 
 app.post('/create', (req, res) => {
 
-    connection.query('INSERT INTO items (name) VALUES (?)', [req.body.itemName], (error, result) => {   
-        connection.query(
-            'SELECT * FROM items', (error, results) => {
-              res.render('index.ejs', {items: results});
-            });
+    connection.query('INSERT INTO items (name) VALUES (?)', [req.body.itemName], (error) => {   
+        if (error) console.log(error);
+        res.redirect('/index');
     });
 });
 
