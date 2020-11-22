@@ -3,6 +3,7 @@ const app = express();
 const mysql = require('mysql');
 
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
 
 const connection = mysql.createConnection({
@@ -16,7 +17,7 @@ connection.connect(err => {
     if (err) throw err;
     console.log('Connected');
 
-    const tableItems = 'CREATE TABLE IF NOT EXISTS items (id INT NOT NULL , name VARCHAR (10) NOT NULL, PRIMARY KEY (id))';
+    const tableItems = 'CREATE TABLE IF NOT EXISTS items (id INT NOT NULL AUTO_INCREMENT , name VARCHAR (10) NOT NULL, PRIMARY KEY (id))';
 
     connection.query(tableItems, (error, result) => {
         if (error) console.log('Failed to create table items');
@@ -38,6 +39,16 @@ app.get('/index', (req, res) => {
 app.get('/new', (req , res) => {
     res.render('new.ejs');
 })
+
+app.post('/create', (req, res) => {
+
+    connection.query('INSERT INTO items (name) VALUES (?)', [req.body.itemName], (error, result) => {   
+        connection.query(
+            'SELECT * FROM items', (error, results) => {
+              res.render('index.ejs', {items: results});
+            });
+    });
+});
 
 app.listen(3234 , () => {
     console.log('Server started');
