@@ -206,8 +206,9 @@
     height: 72px;
     border: 1px solid #f0f4f9;
     border-top: none;
-    line-height: 74px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .table-body .id-column {
@@ -235,7 +236,7 @@
   }
   
   .item-menu form input {
-    font-size: 16px;
+    font-size: 14px;
     color: #bac6d3;
     cursor: pointer;
     -webkit-appearance: none;
@@ -254,9 +255,10 @@
   
   .item-menu a {
     width: 60px;
-    font-size: 16px;
+    font-size: 14px;
     color: #bac6d3;
     text-align: center;
+    line-height: 28px;
   }
   
   .item-menu a:hover {
