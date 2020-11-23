@@ -33,8 +33,8 @@
                 <form action="/delete/<%= item.id %>" method="POST">
                   <input type="submit" value="Delete">
                 </form>
+                <a href="/edit/ <%= item.id %>">Edit</a>
               </div>
-
             </li>
             <% }) %>
         </ul>
